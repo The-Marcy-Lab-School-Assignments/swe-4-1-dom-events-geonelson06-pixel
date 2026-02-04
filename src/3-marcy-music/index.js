@@ -32,3 +32,32 @@ const playlists = [
 ];
 
 // Add your code here...
+const playlistList = document.getElementById("playlist-list");
+const nowPlayingTitle = document.getElementById("now-playing-title");
+
+playlists.forEach((playlist) => {
+  const li = document.createElement("li");
+  li.classList.add("playlist-card");
+  li.dataset.title = playlist.title;
+
+  li.innerHTML = `
+    <img src="${playlist.image}" alt="${playlist.title} playlist cover" />
+    <p>${playlist.title}</p>
+  `;
+
+  playlistList.appendChild(li);
+});
+
+playlistList.addEventListener("click", (event) => {
+  const card = event.target.closest(".playlist-card");
+  if (!card) return;
+
+  const selectedCard = document.querySelector(".playlist-card.selected");
+  if (selectedCard) {
+    selectedCard.classList.remove("selected");
+  }
+
+  card.classList.add("selected");
+
+  nowPlayingTitle.textContent = card.dataset.title;
+});
