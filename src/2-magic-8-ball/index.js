@@ -1,6 +1,6 @@
 // Feel free to use this array of fortunes or come up with your own!
-const askButton = document.getElementById("ask-button");
-const eightBall = document.getElementById("eight-ball");
+const askButton = document.getElementById("ask-btn");
+const eightBall = document.getElementById("eight");
 const answer = document.getElementById("answer");
 
 const fortunes = [
@@ -12,7 +12,7 @@ const fortunes = [
   "Very doubtful"
 ];
 
-askButton.addEventListener("click", () => {
+askButton.addEventListener(("click"), () => {
   eightBall.style.display = "none";
 
   const randomIndex = Math.floor(Math.random() * fortunes.length);
