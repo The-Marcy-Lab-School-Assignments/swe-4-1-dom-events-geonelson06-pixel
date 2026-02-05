@@ -32,20 +32,22 @@ const playlists = [
 ];
 
 // Add your code here...
-const playlistList = document.getElementById("playlist-list");
+const playlistList = document.getElementById("playlists-grid");
 const nowPlayingTitle = document.getElementById("now-playing-title");
 
 playlists.forEach((playlist) => {
-  const li = document.createElement("li");
+  const li = document.createElement('li');
   li.classList.add("playlist-card");
   li.dataset.title = playlist.title;
 
-  li.innerHTML = `
-    <img src="${playlist.image}" alt="${playlist.title} playlist cover" />
-    <p>${playlist.title}</p>
-  `;
+  const img = document.createElement('img');
+  const p = document.createElement('p');
+  img.src = playlist.image;
+  img.alt = `${playlist.title} playlist cover`
+  p.textContent = playlist.title;
 
-  playlistList.appendChild(li);
+  li.append(img, p);
+  playlistList.append(li);
 });
 
 playlistList.addEventListener("click", (event) => {
